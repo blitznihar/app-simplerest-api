@@ -1,25 +1,21 @@
-package com.blitznihar.spring.appsimplerestapi;
+package com.blitznihar.spring.appsimplerestapi.terraform;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.blitznihar.spring.appsimplerestapi.terraform.Terraform;
-import com.blitznihar.spring.appsimplerestapi.terraform.TerraformController;
-import com.blitznihar.spring.appsimplerestapi.terraform.TerraformService;
-
-@RunWith(SpringRunner.class)
-@WebMvcTest(value = TerraformController.class, secure = false)
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(TerraformController.class)
 public class TerraformControllerTest {
 	
 	@Autowired
@@ -47,5 +43,11 @@ public class TerraformControllerTest {
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
+	
+//	@Test
+//	public void exampleTest() {
+//		MockMvcRequestBuilders.post("/terraform").re.expectStatus().isOk()
+//		.expectBody(String.class).isEqualTo("Hello World");
+//	}
 	
 }
